@@ -1,0 +1,91 @@
+<% layout("./layouts/boilerplate") -%>
+<body>
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h1>Edit Data</h1>
+            <form method="post" action="/listing/<%= result._id %>?_method=PUT" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="Title" class="form-label">Title</label>
+                    <input name="listing[title]" value="<%= result.title %>" class="form-control" type="text" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                    <div class="invalid-feedback">
+                        Please enter Proper Title
+                      </div>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name="listing[description]" class="form-control" required><%= result.description %></textarea>
+                    <div class="invalid-feedback">
+                        Please enter short description.
+                      </div>
+                    <div class="valid-feedback">
+                        👍
+                      </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="image">Image URL</label>
+                    <input class="form-control" name="listing[image]" type="text" value="<%= result.image %>" required>
+                    <div class="invalid-feedback">
+                        Please provide a valid Image URL.
+                      </div>
+                    <div class="valid-feedback">
+                        👍
+                      </div>
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="form-label">Location</label>
+                    <input class="form-control" type="text" name="listing[location]" value="<%= result.location %>" required>
+                    <div class="invalid-feedback">
+                        Please provide a valid Location.
+                      </div>
+                    <div class="valid-feedback">
+                        👍
+                      </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-md-8">
+                        <label class="form-label" for="price">Price</label>
+                        <input class="form-control" type="text" name="listing[price]" value="<%= result.price %>" required>
+                        <div class="invalid-feedback">
+                            Please provide a valid price.
+                          </div>
+                        <div class="valid-feedback">
+                            Price is Good
+                          </div>
+                    </div>
+                    <div class="mb-3 col-md-4">
+                        <label for="country" class="form-label">Country</label>
+                        <input class="form-control" type="text" name="listing[country]" value="<%= result.country %>" required>
+                        <div class="invalid-feedback">
+                            Please provide a Country name .
+                          </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary">Edit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for Bootstrap form validation
+        (() => {
+            'use strict'
+
+            // Fetch all forms we want to apply validation to
+            const forms = document.querySelectorAll('.needs-validation');
+
+            // Loop over them and prevent submission if invalid
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        })();
+    </script>
+</body>

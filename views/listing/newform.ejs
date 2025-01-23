@@ -1,0 +1,107 @@
+<% layout("./layouts/boilerplate") -%>
+<body>
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h1> Creating New Listing</h1>
+            <br>
+            <!-- Form to add a new listing -->
+            <form method="post" action="/listing/addnew" class="needs-validation" novalidate>
+                
+                <!-- Title Input Field -->
+                <div class="md-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input name="listing[title]" class="form-control" type="text" placeholder="Enter the title" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please enter a valid title.
+                    </div>
+                </div>
+
+                <!-- Description Textarea Field -->
+                <div class="md-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name="listing[description]" class="form-control" placeholder="Enter a short description" required></textarea>
+                    <div class="valid-feedback">
+                        👍
+                    </div>
+                    <div class="invalid-feedback">
+                        Please enter a description.
+                    </div>
+                </div>
+
+                <!-- Image URL Input Field -->
+                <div class="md-3">
+                    <label for="image" class="form-label">Image URL</label>
+                    <input class="form-control" name="listing[image]" type="text" placeholder="Enter the image URL (optional)">
+                </div>
+
+                <!-- Location Input Field -->
+                <div class="md-3">
+                    <label for="location" class="form-label">Location</label>
+                    <input class="form-control" type="text" name="listing[location]" placeholder="Enter the location" required>
+                    <div class="valid-feedback">
+                        👍
+                    </div>
+                    <div class="invalid-feedback">
+                        Please enter the location.
+                    </div>
+                </div>
+
+                <!-- Price Input Field -->
+                <div class="row">
+                    <div class="md-3 col-md-8">
+                        <label for="price" class="form-label">Price</label>
+                        <input class="form-control" type="text" name="listing[price]" placeholder="Enter the price" required>
+                        <div class="valid-feedback">
+                            👍
+                        </div>
+                        <div class="invalid-feedback">
+                            Please enter a valid price.
+                        </div>
+                    </div>
+
+                    <!-- Country Input Field -->
+                    <div class="md-3 col-md-4">
+                        <label for="country" class="form-label">Country</label>
+                        <input class="form-control" type="text" name="listing[country]" placeholder="Enter the country" required>
+                        <div class="valid-feedback">
+                            👍
+                        </div>
+                        <div class="invalid-feedback">
+                            Please enter a country.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <br>
+                <div>
+                    <button class="btn btn-primary" type="submit">Add Listing</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript for Bootstrap Form Validation -->
+    <script>
+        (() => {
+            'use strict'
+
+            // Get all forms to apply validation to
+            const forms = document.querySelectorAll('.needs-validation');
+
+            // Loop over forms and prevent submission if invalid
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        })();
+    </script>
+</body>
